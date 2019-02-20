@@ -1,5 +1,7 @@
 package challenge;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +13,17 @@ public class QuoteServiceImpl implements QuoteService {
 
 	@Override
 	public Quote getQuote() {
-		return null;//this.repository.findOne();
+		List<Quote> list = this.repository.findAll();
+		Quote findOne = list.stream().sequential().findAny().get();
+		return findOne;
 	}
 
 	@Override
 	public Quote getQuoteByActor(String actor) {
-		return repository.findByActor(actor);
+		List<Quote> listActor = repository.findByActor(actor);
+		
+		Quote quote = listActor.stream().distinct().findAny().get();
+		return quote;
 	}
 
 }

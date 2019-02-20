@@ -1,11 +1,13 @@
 package challenge;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface QuoteRepository extends JpaRepository<Quote, Integer>{
 
-	//Quote findOne();
+	List<Quote> findAll();
 	
-	Quote findByActor(String actor);
+	List<Quote> findByActor(String actor);
 
 }
