@@ -14,7 +14,7 @@ public class QuoteServiceImpl implements QuoteService {
 	@Override
 	public Quote getQuote() {
 		List<Quote> list = this.repository.findAll();
-		Quote findOne = list.stream().sequential().findAny().get();
+		Quote findOne = list.stream().findAny().get();
 		return findOne;
 	}
 
@@ -22,7 +22,7 @@ public class QuoteServiceImpl implements QuoteService {
 	public Quote getQuoteByActor(String actor) {
 		List<Quote> listActor = repository.findByActor(actor);
 		
-		Quote quote = listActor.stream().distinct().findAny().get();
+		Quote quote = listActor.stream().findAny().get();
 		return quote;
 	}
 
